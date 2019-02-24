@@ -1,7 +1,4 @@
-﻿#include<iostream>
-#include<ctime>
-#include<cstdlib>
-
+﻿
 class GameMain
 {
 public:
@@ -14,37 +11,49 @@ public:
 
 	//選択した手を表示
 	void SelectHandShow(int InputData, const char *Person);
-	//勝敗決定
-	void Judg(int PlayerInputData ,int RandumInputData);
-
-	//勝敗表示
-	void judgView(int Result);
-
-	static int GetGameEndFlg() {return GameEndFlg;};
 
 private:
 	//じゃんけんの手
-	static const int GU = 1;
-	static const int CHOKI = 2;
-	static const int PA = 3;
+	enum JnakenHand {
+		NONE = 0,
+		GU,
+		CHOKI,
+		PA,
+		HAND_MAX,
+	};
 
 	//じゃんけんの結果
-	static const int WIN = 0;
-	static const int DRAW = 1;
-	static const int LOSE = 2;
+	enum JankenResult{
+		DRAW = 0,
+		LOSE,
+		WIN,
+		RESULT_MAX,
+	};
+	
+	static const int RESULT_STRING_MAX = 19;
+	static const int HAND_SELECT_MAX = 21;
+
+	//勝負の結果を表示用
+	char JudgResult[JankenResult::RESULT_MAX][RESULT_STRING_MAX] = {
+		"引き分け！",
+		"プレイヤーの負け！",
+		"プレイヤーの勝ち！",
+	};
+
+	char SelectHand[JnakenHand::HAND_MAX-1][HAND_SELECT_MAX] = {
+		"が出した手は　グー",
+		"が出した手は　チョキ",
+		"が出した手は　パー",
+	};
 
 	//プレイヤーの入力データ
 	int PlayerInput = 0;
 	//相手の入力データ
 	int EnemyInput = 0;
 
-	//勝負の結果を表示用
-	int JudgResult = 0;
+	//勝敗結果判定用
+	int Result = 0;
 
 	//勝負の結果をカウント
-	int WinCount = 0;
-	int DrowCount = 0;
-	int LoseCount = 0;
-
-	static int GameEndFlg;
+	int ResultCount[JankenResult::RESULT_MAX] = { 0,0,0 };
 };

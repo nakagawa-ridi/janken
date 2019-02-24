@@ -1,10 +1,14 @@
-﻿#include"GameMain.h"
+﻿#include<ctime>
+#include<cstdlib>
+#include"GameMain.h"
 
 int main()
 {
 	srand((unsigned int)time(NULL));
 	GameMain gamemain;
-	while (GameMain::GetGameEndFlg() == 0) {
+	gamemain.GameInitialize();
+	//無限ループ
+	while (1) {
 		gamemain.GameInitialize();
 		gamemain.GameUpdate();
 		gamemain.GameRender();
