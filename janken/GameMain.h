@@ -1,7 +1,10 @@
-﻿
+﻿#pragma once
+
 class GameMain
 {
 public:
+	//ゲーム起動時にすべての変数を初期化
+	void FirstInitialize();
 	//初期化
 	void GameInitialize();
 	//更新
@@ -34,26 +37,30 @@ private:
 	static const int HAND_SELECT_MAX = 21;
 
 	//勝負の結果を表示用
-	char JudgResult[JankenResult::RESULT_MAX][RESULT_STRING_MAX] = {
+	const char *JudgResult[JankenResult::RESULT_MAX] = {
 		"引き分け！",
 		"プレイヤーの負け！",
 		"プレイヤーの勝ち！",
 	};
 
-	char SelectHand[JnakenHand::HAND_MAX-1][HAND_SELECT_MAX] = {
+	const char *SelectHand[JnakenHand::HAND_MAX-1] = {
 		"が出した手は　グー",
 		"が出した手は　チョキ",
 		"が出した手は　パー",
 	};
 
-	//プレイヤーの入力データ
-	int PlayerInput = 0;
-	//相手の入力データ
-	int EnemyInput = 0;
-
 	//勝敗結果判定用
-	int Result = 0;
+	const int Result[JnakenHand::HAND_MAX - 1][JnakenHand::HAND_MAX - 1] = {
+		{JankenResult::DRAW, JankenResult::LOSE, JankenResult::WIN},
+		{JankenResult::WIN, JankenResult::DRAW, JankenResult::LOSE},
+		{JankenResult::LOSE, JankenResult::WIN, JankenResult::DRAW},
+	};
+
+	//プレイヤーの入力データ
+	int PlayerInput;
+	//相手の入力データ
+	int EnemyInput;
 
 	//勝負の結果をカウント
-	int ResultCount[JankenResult::RESULT_MAX] = { 0,0,0 };
+	int ResultCount[JankenResult::RESULT_MAX];
 };
