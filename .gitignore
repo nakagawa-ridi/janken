@@ -18,7 +18,5 @@ Debug/janken.exe
 Debug/janken.ilk
 Debug/janken.pdb
 *.pch
-.vs/janken/v15/Browse.VC.db
-.vs/janken/v15/.suo
 .vs/janken/v15/ipch/d12a05d96373d591.ipch
 .vs/janken/v15/ipch/AutoPCH/e417ec3a95ccab6/MAIN.ipch
