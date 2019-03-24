@@ -1,5 +1,7 @@
 
+*.opt
 *.db
+*.clw
 *.enc
 *.exe
 *.idb
@@ -9,9 +11,15 @@
 *.ipdb
 *.lastbuildstate
 *.log
+*.mak
+*.ncd
 *.obj
 *.opendb
+*.opt
 *.pch
 *.pdb
+*.pubxml
+*.sdf
 *.suo
 *.tlog
+*.user
